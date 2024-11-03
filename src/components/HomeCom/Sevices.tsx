@@ -7,30 +7,45 @@ import Cooking from "../../../public/images/cooking.png";
 import { Variants, motion } from "framer-motion";
 
 import ServiceCom from "../ServiceCom";
+import { useRequest } from "ahooks";
+import REFERENCE_API from "@/api/Reference";
+import { purpose, team } from "@/utils/data-util";
 // import { serviceA } from "@/utils/data-util";
 
 interface ISerices {
-  serviceA: {
+  introduction: {
     title: string;
     des: string;
+    img: string;
   };
 }
 
-function Sevices({ serviceA }: ISerices) {
-  const cardVariants: Variants = {
-    offscreen: {
-      y: 200,
-    },
-    onscreen: {
-      y: 0,
-      // rotate: -10,
-      transition: {
-        type: "spring",
-        bounce: 0.4,
-        duration: 1.5,
-      },
-    },
-  };
+function Sevices({ introduction }: ISerices) {
+  // const cardVariants: Variants = {
+  //   offscreen: {
+  //     y: 200,
+  //   },
+  //   onscreen: {
+  //     y: 0,
+  //     // rotate: -10,
+  //     transition: {
+  //       type: "spring",
+  //       bounce: 0.4,
+  //       duration: 1.5,
+  //     },
+  //   },
+  // };
+
+  // const {
+  //   data: listReference,
+  //   loading: loadingListReference,
+  //   error: errorListReference,
+  //   refresh: refreshListReference,
+  // } = useRequest(
+  //   () => REFERENCE_API.getListReference() // API expects 1-based indexing
+  // );
+  // console.log("listReference", listReference);
+
   return (
     <div className="container md:px-0 px-4 mx-auto py-8">
       <div className="flex flex-col gap-8">
@@ -38,14 +53,13 @@ function Sevices({ serviceA }: ISerices) {
           initial="offscreen"
           whileInView="onscreen"
           viewport={{ once: true, amount: 0 }}
-          variants={cardVariants}
+          // variants={cardVariants}
           className="relative"
         >
           <motion.div className="relative">
             <Image
-              src={"/images/driver.png"}
+              src={introduction.img}
               alt="Driver Image"
-              // fill
               width={400}
               height={400}
               className="xl:w-[663px] md:w-[400px]  h-full"
@@ -53,7 +67,7 @@ function Sevices({ serviceA }: ISerices) {
             />
           </motion.div>
           <div className="md:absolute top-20 right-0 my-5 md:my-0">
-            <ServiceCom title={serviceA.title} des={serviceA.des} />
+            <ServiceCom title={introduction.title} des={introduction.des} />
           </div>
         </motion.div>
 
@@ -62,19 +76,19 @@ function Sevices({ serviceA }: ISerices) {
           initial="offscreen"
           whileInView="onscreen"
           viewport={{ once: true, amount: 0 }}
-          variants={cardVariants}
+          // variants={cardVariants}
         >
           <Image
-            src={"/images/deliver.png"}
+            src={team.img}
             alt="Driver Image"
             // fill
             width={400}
             height={400}
-            className="xl:w-[663px] md:w-[400px]  h-full"
+            className="xl:w-[663px] md:w-[400px]  h-full rounded-2xl"
             sizes="(min-width: 808px) 50vw, 100vw"
           />
           <div className="md:absolute top-20 md:left-0 right-0 my-5 md:my-0 z-10">
-            <ServiceCom title={serviceA.title} des={serviceA.des} />
+            <ServiceCom title={team.title} des={team.des} />
           </div>
         </motion.div>
 
@@ -83,10 +97,10 @@ function Sevices({ serviceA }: ISerices) {
           initial="offscreen"
           whileInView="onscreen"
           viewport={{ once: true, amount: 0 }}
-          variants={cardVariants}
+          // variants={cardVariants}
         >
           <Image
-            src={"/images/cooking.png"}
+            src={purpose.img}
             alt="Driver Image"
             // fill
             width={400}
@@ -95,7 +109,7 @@ function Sevices({ serviceA }: ISerices) {
             sizes="(min-width: 808px) 50vw, 100vw"
           />
           <div className="md:absolute top-20 right-0 my-5 md:my-0">
-            <ServiceCom title={serviceA.title} des={serviceA.des} />
+            <ServiceCom title={purpose.title} des={purpose.des} />
           </div>
         </motion.div>
       </div>

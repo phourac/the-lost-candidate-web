@@ -11,7 +11,7 @@ function Footer() {
   const defaultLang = languages.find((item) => item.value === locale);
 
   return (
-    <footer className="bg-primary">
+    <footer className="bg-black">
       <div className="mx-auto w-full py-6 lg:py-8 container md:px-0 px-4">
         <div className="md:flex md:justify-start ">
           <div className="mb-6 md:mb-0 md:pr-28 lg:pr-72">

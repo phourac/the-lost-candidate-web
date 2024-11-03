@@ -1,5 +1,5 @@
 import Image from "next/image";
-import banner_home from "../../../public/images/banner_home.png";
+import banner_home from "../../../public/images/Home_Banner.png";
 import Sevices from "@/components/HomeCom/Sevices";
 import ScrollIcon from "@/components/ScrollAnimationIcon";
 import Comitting from "@/components/Comitting";
@@ -19,6 +19,11 @@ import {
   patnerscompany,
   serviceA,
 } from "@/utils/data-util";
+import YouCanFInd from "@/components/HomeCom/YouCanFInd";
+import WhoWeAre from "@/components/HomeCom/WhoWeAre";
+import OurMission from "@/components/HomeCom/OurMission";
+import OurVision from "@/components/HomeCom/OurVision";
+import TableCom from "@/components/JobPortal/TableCom";
 export default async function Home() {
   return (
     <div className="overflow-x-hidden">
@@ -40,8 +45,12 @@ export default async function Home() {
         <LearnMore home={home} />
       </div>
       <div className="lg:relative bottom-[200px]">
-        <Sevices serviceA={serviceA} />
-        <Comitting committing={committing} />
+        {/* <Sevices serviceA={serviceA} /> */}
+        <YouCanFInd />
+        <WhoWeAre />
+        <OurMission />
+        <OurVision />
+        {/* <Comitting committing={committing} />
         <CorePatners corepatners={corepatners} />
         <div className="overflow-x-auto">
           <PartnerCompany patnerscompany={patnerscompany} />
@@ -53,7 +62,7 @@ export default async function Home() {
         </div>
         <div className="px-4 lg:-mb-[150px] mt-16 ">
           <Features />
-        </div>
+        </div> */}
       </div>
     </div>
   );

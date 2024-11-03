@@ -2,15 +2,15 @@ import type { Config } from "tailwindcss";
 
 const colors = {
   primary: {
-    main: "#024F87",
-    light: "#8DCDFF",
+    main: "#1664fa",
+    light: "#1690fa",
     lighter: "#F7F9FA",
     content: "#FFFFFF",
     typography: "#090A0A",
     dark: "#284573",
   },
   secondary: {
-    main: "#404446",
+    main: "#c7c8c9",
     grey: "#72777A",
     dark: "#303437",
   },

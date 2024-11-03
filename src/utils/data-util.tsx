@@ -1,3 +1,5 @@
+import { color } from "framer-motion";
+import { title } from "process";
 import { FaFacebook, FaTelegram } from "react-icons/fa";
 
 export const navbar = [
@@ -464,5 +466,71 @@ export const logopatners = [
   },
   {
     logo: "/images/BLOC-Logo-MixColor 1.png",
+  },
+];
+
+export const youCanFindJob = [
+  {
+    title: "Job portal",
+    des: "Websites, apps, social media where recruiters are looking for candidates",
+    img: "/images/Recruite.png",
+    color: "#61d10a",
+  },
+  {
+    title: "Problem and solution",
+    des: "You can find common problems and solutions",
+    img: "/images/Problem_Solution.png",
+    color: "#b00c9d",
+  },
+  {
+    title: "Document",
+    des: "Interviews tips and resume or cv sample",
+    img: "/images/Interview.png",
+    color: "#a7d618",
+  },
+];
+
+export const introduction = {
+  title: "Introduction",
+  des: "We are from the Youth-Ignite project, a VBNK workshop and funded by the United States Agency for International Development (USAID) through a youth leadership initiative for implementing project activities on resilience. Youth leadership and youth participation in Phnom Penh.",
+  img: "/images/Vbnk 2.png",
+};
+
+export const purpose = {
+  title: "Purpose of this website",
+  des: "This site was created to support our implementation project and also to help students who are having difficulty finding employment.",
+  img: "/images/Vbnk 2.jpg",
+};
+
+export const team = {
+  title: "Team",
+  des: "Born from the passion and determination of four dedicated team members, this platform is more than just a project. It's a testament to our shared belief in its potential to make a positive impact.",
+  img: "/images/Vbnk 3.png",
+};
+
+export const mission = [
+  {
+    des: "Provide students with practical tools, resources, and job search guidance.",
+  },
+  {
+    des: "Help students overcome challenges in finding employment.",
+  },
+  {
+    des: "Offer interview tips, resume samples, and career advice to enhance student employability.",
+  },
+  {
+    des: "Support students in confidently navigating the job market and securing meaningful careers.",
+  },
+];
+
+export const vision = [
+  {
+    des: "Become the go-to platform for students transitioning from education to employment.",
+  },
+  {
+    des: "Ensure every student has access to the skills, knowledge, and resources.",
+  },
+  {
+    des: "Create a future where students can easily find jobs aligned with their education.",
   },
 ];

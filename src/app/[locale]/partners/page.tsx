@@ -12,6 +12,8 @@ import Header from "@/components/AboutusCom/Header";
 import { Metadata } from "next";
 import { corepatners, logopatners } from "@/utils/data-util";
 import { joinForm, joinus } from "@/utils/partner-util";
+import Accordion from "@/components/Accordion";
+import AccordionInterview from "@/components/DocumentCom/AccordionInterview";
 
 export const metadata: Metadata = {
   openGraph: {
@@ -33,7 +35,7 @@ function Partners() {
     <div className="w-full">
       <Header img={Partners_banner} title={t("Partners")} />
 
-      <JoinUs joinus={joinus} />
+      {/* <JoinUs joinus={joinus} />
       <CorePatners corepatners={corepatners} />
       <div className="px-4">
         <PartnersJoin logopatners={logopatners} />
@@ -46,6 +48,9 @@ function Partners() {
       </div>
       <div className="px-4 my-16">
         <Features />
+      </div> */}
+      <div className="px-4 my-16">
+        <AccordionInterview />
       </div>
     </div>
   );

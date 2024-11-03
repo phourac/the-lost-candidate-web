@@ -19,6 +19,8 @@ import { useTranslations } from "next-intl";
 import Header from "@/components/AboutusCom/Header";
 import Aboutus_banner from "../../../../public/images/aboutus_banner.png";
 import { Metadata } from "next";
+import WebsiteApp from "@/components/JobPortal/WensiteApp";
+import SocialMedia from "@/components/JobPortal/SocialMedia";
 
 export const metadata: Metadata = {
   openGraph: {
@@ -38,7 +40,7 @@ function AboutUs() {
   return (
     <div className="w-full">
       <Header img={Aboutus_banner} title={t("About us")} />
-      <CardWithBlueFrame
+      {/* <CardWithBlueFrame
         des={aboutus.des}
         img={aboutus.img}
         title={aboutus.title}
@@ -67,10 +69,12 @@ function AboutUs() {
       </div>
       <div className="px-4">
         <Download />
-      </div>
-      <div className="px-4 my-16">
+      </div> */}
+      {/* <div className="px-4 my-16">
         <Features />
-      </div>
+      </div> */}
+      <WebsiteApp />
+      <SocialMedia />
     </div>
   );
 }
