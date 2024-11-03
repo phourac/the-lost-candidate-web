@@ -61,7 +61,7 @@ export default function Drawer({
               <DialogPanel className="w-full h-full p-6 transition-all transform bg-white shadow-xl">
                 <DialogTitle className="flex justify-end items-center mt-4 mb-2">
                   <Link
-                    className="absolute w-[138px] h-[21px] cursor-pointer right-0 left-0 mx-auto"
+                    className="absolute w-[138px] h-[36px] cursor-pointer right-0 left-0 mx-auto"
                     href={`/`}
                     onClick={() => setIsOpen(false)}
                   >

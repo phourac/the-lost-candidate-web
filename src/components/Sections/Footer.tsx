@@ -15,23 +15,28 @@ function Footer() {
       <div className="mx-auto w-full py-6 lg:py-8 container md:px-0 px-4">
         <div className="md:flex md:justify-start ">
           <div className="mb-6 md:mb-0 md:pr-28 lg:pr-72">
-            <div className="relative md:w-[233px] md:h-[35px] w-[133px] h-[25px]">
+            {/* <div className="relative md:w-[233px] md:h-[35px] w-[133px] h-[25px]">
               <Image
                 src={"/images/logo1.png"}
                 alt="logo"
                 fill
                 sizes="(max-width: 768px) 96px 80px, (max-width: 1200px) 144px 128px"
               />
-            </div>
+            </div> */}
+            <h1 className="text-white text-2xl uppercase">
+              The Lost Candidate
+            </h1>
             <ul className="text-gray-500 dark:text-gray-400 font-medium pt-4">
-              {footer.tkexpress.map((item, index) => (
-                <li
-                  key={index}
-                  className="my-3 text-base text-primary-content font-medium whitespace-nowrap"
-                >
-                  {item.p}
-                </li>
-              ))}
+              {footer.tkexpress.map((item, index) => {
+                return (
+                  <li
+                    key={index}
+                    className="my-3 text-base text-primary-content font-medium whitespace-nowrap"
+                  >
+                    {item.p}
+                  </li>
+                );
+              })}
             </ul>{" "}
           </div>
           <div className="grid grid-cols-2 gap-8 sm:gap-36 sm:grid-cols-3 mt-5">

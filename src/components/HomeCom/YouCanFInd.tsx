@@ -2,7 +2,6 @@
 import { youCanFindJob } from "@/utils/data-util";
 import React, { useState } from "react";
 
-import Recruite from "../../../public/images/Recruite.png";
 import Image, { StaticImageData } from "next/image";
 import { SiFaceit } from "react-icons/si";
 import { ArrowLeft2, ArrowRight2 } from "iconsax-react";

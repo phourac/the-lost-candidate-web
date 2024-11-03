@@ -10,24 +10,14 @@ import { Pagination } from "../Pagination";
 
 function WebsiteApp() {
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedUsers, setSelectedUsers] = useState([]);
-
-  //   const users = [
-  //     // Your user data here...
-  //   ];
-
-  const usersPerPage = 10;
-  //   const totalPages = Math.ceil(users.length / usersPerPage);
-
-  const [search, setSearch] = useState("");
 
   const {
     data: listReference,
     loading: loadingListReference,
     error: errorListReference,
     refresh: refreshListReference,
-  } = useRequest(() => REFERENCE_API.getListReference(search, currentPage), {
-    refreshDeps: [search, currentPage],
+  } = useRequest(() => REFERENCE_API.getListReference("", currentPage), {
+    refreshDeps: [currentPage],
   });
 
   const handlePageChange = (newPage: number) => {
@@ -38,7 +28,7 @@ function WebsiteApp() {
 
   return (
     <>
-      <div className="flex flex-col items-center gap-4 pt-32 pb-16 px-4">
+      <div className="flex flex-col items-center gap-4 pt-16 pb-16 px-4">
         <h1 className="text-primary md:text-3xl text-xl font-bold uppercase">
           Websites and apps
         </h1>
