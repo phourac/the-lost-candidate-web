@@ -1,6 +1,5 @@
 import Image from "next/image";
 import banner_home from "../../../public/images/Home_Banner.png";
-import ScrollIcon from "@/components/ScrollAnimationIcon";
 
 import { home } from "@/utils/data-util";
 import YouCanFInd from "@/components/HomeCom/YouCanFInd";
@@ -22,9 +21,6 @@ export default async function Home() {
             sizes="(max-width: 768px) 96px 80px, (max-width: 1200px) 144px 128px"
             placeholder="blur"
           />
-          <span className="absolute -bottom-5 left-[50%] md:block hidden">
-            <ScrollIcon />
-          </span>
         </div>
         <LearnMore home={home} />
       </div>
