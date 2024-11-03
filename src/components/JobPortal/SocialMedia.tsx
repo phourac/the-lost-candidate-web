@@ -1,38 +1,22 @@
 "use client";
-import REFERENCE_API from "@/api/Reference";
 import { useRequest } from "ahooks";
 import Link from "next/link";
 import { useState } from "react";
-import { FaApple } from "react-icons/fa";
-import { IoLogoGooglePlaystore } from "react-icons/io5";
 import { SearchBar } from "../SearchBar";
 import { Pagination } from "../Pagination";
 import SOCIALMEDIA_API from "@/api/Socialmedia";
 
 function SocialMedia() {
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedUsers, setSelectedUsers] = useState([]);
-
-  //   const users = [
-  //     // Your user data here...
-  //   ];
-
-  const usersPerPage = 10;
-  //   const totalPages = Math.ceil(users.length / usersPerPage);
-
-  const [search, setSearch] = useState("");
 
   const {
     data: listSocialMedia,
     loading: loadingListSocialMedia,
     error: errorListSocialMedia,
     refresh: refreshListSocialMedia,
-  } = useRequest(
-    () => SOCIALMEDIA_API.getListSocialMedia(search, currentPage),
-    {
-      refreshDeps: [search, currentPage],
-    }
-  );
+  } = useRequest(() => SOCIALMEDIA_API.getListSocialMedia("", currentPage), {
+    refreshDeps: [currentPage],
+  });
 
   const handlePageChange = (newPage: number) => {
     if (newPage > 0 && newPage <= listSocialMedia?.meta.totalPages!) {
@@ -42,7 +26,7 @@ function SocialMedia() {
 
   return (
     <>
-      <div className="flex flex-col items-center gap-4 pt-32 pb-16 px-4">
+      <div className="flex flex-col items-center gap-4 pt-16 pb-16 px-4">
         <h1 className="text-primary md:text-3xl text-xl font-bold uppercase">
           Groups Chanels and Pages
         </h1>
@@ -55,7 +39,7 @@ function SocialMedia() {
         <SearchBar />
       </div>
 
-      <div className="flex flex-col w-full">
+      <div className="flex flex-col w-full pb-16">
         <div className="overflow-x-auto">
           <div className="pb-2 inline-block min-w-full px-4 sm:px-6 lg:px-8">
             <div className="overflow-hidden">

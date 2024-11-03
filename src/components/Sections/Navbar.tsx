@@ -45,7 +45,7 @@ function Navbar() {
       <header className="bg-primary-content py-[8px] md:sticky top-0 z-20">
         <nav className="container flex items-center justify-between md:px-0 px-4 py-[12px] mx-auto ">
           <Link
-            className="relative w-[138px] h-[21px] cursor-pointer"
+            className="relative w-[138px] h-[36px] cursor-pointer"
             href={`/`}
           >
             <Image

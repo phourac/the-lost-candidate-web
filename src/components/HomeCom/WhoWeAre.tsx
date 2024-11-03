@@ -1,6 +1,6 @@
 import { introduction, serviceA } from "@/utils/data-util";
 import React from "react";
-import Sevices from "./Sevices";
+import Sevices from "../Services";
 
 const WhoWeAre = () => {
   return (

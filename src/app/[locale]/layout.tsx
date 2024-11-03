@@ -29,9 +29,9 @@ const inter = localFont({
 
 export const metadata: Metadata = {
   openGraph: {
-    title: "TK Express",
+    title: "Home - The Lost Candiate",
     description:
-      "BLOC is Cambodian home delivery, you make a purchase, your items will arrive at your doors.",
+      "The Lost Candiate is a website that offer a variety of strategies and resources to help students find a job that aligns with their skills and career aspirations.",
   },
   icons: [
     {
@@ -57,13 +57,10 @@ export const metadata: Metadata = {
       url: "/apple-touch-icon.png",
     },
   ],
-  title: "TK Express",
+  title: "Home - The Lost Candiate",
   description:
-    "BLOC is Cambodian home delivery, you make a purchase, your items will arrive at your doors.",
-  keywords:
-    "cambodia, delivery, grocery, food, baverage, drink, stationary, baby mart, flowers, health, bakery",
+    "The Lost Candiate is a website that offer a variety of strategies and resources to help students find a job that aligns with their skills and career aspirations.",
 };
-
 export default async function RootLayout({
   children,
   params: { locale },
