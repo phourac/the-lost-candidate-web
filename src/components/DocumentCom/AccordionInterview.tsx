@@ -40,7 +40,15 @@ export function AccordionInterview() {
             interview.
           </h6>
         </div>
-        {errorListInterview ? (
+        {loadingListInterview ? (
+          <div
+            className="flex justify-center items-center"
+            style={{ minHeight: "calc(100vh - 300px)" }}
+          >
+            {" "}
+            <p>Loading...</p>
+          </div>
+        ) : errorListInterview ? (
           <p className="text-center text-red-600">
             Failed to load data. Please try again.
           </p>
