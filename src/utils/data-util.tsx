@@ -58,7 +58,7 @@ export const footer = {
     list: [
       {
         icon: FaFacebook,
-        value: "https://www.facebook.com/blocdelivery",
+        value: "https://www.facebook.com/profile.php?id=61567297524412",
         title: "Facebook",
       },
       {
