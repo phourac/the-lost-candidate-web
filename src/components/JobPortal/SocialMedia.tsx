@@ -42,7 +42,7 @@ function SocialMedia() {
       <div className="flex flex-col w-full pb-16">
         <div className="overflow-x-auto">
           <div className="pb-2 inline-block min-w-full px-4 sm:px-6 lg:px-8">
-            <div className="overflow-hidden">
+            <div className="overflow-auto h-[600px] bg-white">
               <table className="min-w-full w-full">
                 <thead className="border-b bg-gray-100">
                   <tr>

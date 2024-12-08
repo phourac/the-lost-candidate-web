@@ -42,7 +42,7 @@ function Navbar() {
 
   return (
     <>
-      <header className="bg-primary-content py-[8px] md:sticky top-0 z-20">
+      <header className="bg-primary-content py-[8px] sticky top-0 z-20">
         <nav className="container flex items-center justify-between md:px-0 px-4 py-[12px] mx-auto ">
           <Link
             className="relative w-[138px] h-[36px] cursor-pointer"
@@ -80,21 +80,7 @@ function Navbar() {
                 </Link>
               </React.Fragment>
             ))}
-            {/* <Menu as={"div"} className="lg:px-[16px] px-[8px]">
-              <MenuButton className="text-base text-secondary-dark">
-                English
-              </MenuButton>
-              <MenuItems anchor="bottom" className="bg-primary-content">
-                <MenuItem>
-                  <a
-                    className="block data-[focus]:bg-blue-100"
-                    href="/settings"
-                  >
-                    Settings
-                  </a>
-                </MenuItem>
-              </MenuItems>
-            </Menu> */}
+           
             <SelectLang {...{ langs, setLangs }} />
           </span>
           <button
