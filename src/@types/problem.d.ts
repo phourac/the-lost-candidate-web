@@ -20,5 +20,17 @@ declare namespace IProblem {
     currentPage: number;
     totalPages: number;
     totalDocuments: number;
+    limit:number
+
+  }
+
+  interface IDetail{
+    data:IProblemData
+  }
+
+  //create 
+  interface ICreateProblem {
+    problem: string
+    solution:string[]
   }
 }

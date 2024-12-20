@@ -19,5 +19,16 @@ declare namespace IInterview {
     currentPage: number;
     totalPages: number;
     totalDocuments: number;
+    limit:number
+  }
+
+    interface IDetail{
+    data:IProblemData
+  }
+
+  //create interview
+  interface ICreateInterview{
+  question: string;
+  answer: string[];
   }
 }
