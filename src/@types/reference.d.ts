@@ -23,4 +23,14 @@ declare namespace IReference {
     totalPages: number;
     totalDocuments: number;
   }
+
+  //create 
+  interface ICreateRefernece{
+    name: string;
+    website: string;
+    app_store: string;
+    play_store: string;
+   focus?: string;
+
+  }
 }
