@@ -233,9 +233,11 @@ useEffect(() => {
                       <tr key={user._id} className="bg-white border-b hover:bg-gray-100">
                         <td className="px-6 py-4 text-sm font-medium text-gray-900">{uniqueIndex}</td>
                         <td className="px-6 py-4 text-sm text-gray-900">{user.problem}</td>
-                        <td className="px-6 py-4 text-sm text-gray-900">
-                          {user.solution.join(', ')} {/* Join answers with commas */}
-                        </td>
+                         <td className="px-6 py-4 text-sm text-gray-900">
+                           {user.solution.map((sol, idx) => (
+                            <div key={idx}>+{sol}</div> // Display each solution in its own div
+                            ))}
+                         </td>
                         <td className="px-6 py-4 text-sm text-gray-900 flex space-x-4">
                           <button
                             className="text-blue-600 hover:text-blue-800"
