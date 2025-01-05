@@ -1,14 +1,14 @@
-"use client";
-import { Link } from "@/hooks/useNavigation";
-import { footer, languages } from "@/utils/data-util";
-import { useLocale, useTranslations } from "next-intl";
-import Image from "next/image";
-import React from "react";
+'use client'
+import { Link } from '@/hooks/useNavigation'
+import { footer, languages } from '@/utils/data-util'
+import { useLocale, useTranslations } from 'next-intl'
+import Image from 'next/image'
+import React from 'react'
 
 function Footer() {
-  const t = useTranslations("Index");
-  const locale = useLocale();
-  const defaultLang = languages.find((item) => item.value === locale);
+  const t = useTranslations('Index')
+  const locale = useLocale()
+  const defaultLang = languages.find((item) => item.value === locale)
 
   return (
     <footer className="bg-black">
@@ -35,9 +35,9 @@ function Footer() {
                   >
                     {item.p}
                   </li>
-                );
+                )
               })}
-            </ul>{" "}
+            </ul>{' '}
           </div>
           <div className="grid grid-cols-2 gap-8 sm:gap-36 sm:grid-cols-3 mt-5">
             <div>
@@ -87,10 +87,10 @@ function Footer() {
             <span>|</span>
             <li className="mx-5 sm:whitespace-nowrap flex items-center gap-2">
               <Image
-                src={defaultLang?.flag || ""}
+                src={defaultLang?.flag || ''}
                 alt=""
-                width={"0"}
-                height={"0"}
+                width={'0'}
+                height={'0'}
                 className="w-[24px] h-auto"
                 sizes="(max-width: 768px) 96px 80px, (max-width: 1200px) 144px 128px"
               />
@@ -101,7 +101,7 @@ function Footer() {
         </div>
       </div>
     </footer>
-  );
+  )
 }
 
-export default Footer;
+export default Footer

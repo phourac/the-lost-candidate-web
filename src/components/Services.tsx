@@ -1,18 +1,18 @@
-"use client";
-import Image from "next/image";
-import React from "react";
+'use client'
+import Image from 'next/image'
+import React from 'react'
 
-import { Variants, motion } from "framer-motion";
+import { Variants, motion } from 'framer-motion'
 
-import { purpose, team } from "@/utils/data-util";
+import { purpose, team } from '@/utils/data-util'
 // import { serviceA } from "@/utils/data-util";
 
 interface ISerices {
   introduction: {
-    title: string;
-    des: string;
-    img: string;
-  };
+    title: string
+    des: string
+    img: string
+  }
 }
 
 function Sevices({ introduction }: ISerices) {
@@ -109,12 +109,12 @@ function Sevices({ introduction }: ISerices) {
         </motion.div>
       </div>
     </div>
-  );
+  )
 }
 
 interface IService {
-  title: string;
-  des: string;
+  title: string
+  des: string
 }
 
 const ServiceCom = ({ des, title }: IService) => {
@@ -127,7 +127,7 @@ const ServiceCom = ({ des, title }: IService) => {
         {des}
       </p>
     </div>
-  );
-};
+  )
+}
 
-export default Sevices;
+export default Sevices

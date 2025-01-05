@@ -1,14 +1,14 @@
-"use client";
-import { youCanFindJob } from "@/utils/data-util";
-import React, { useState } from "react";
+'use client'
+import { youCanFindJob } from '@/utils/data-util'
+import React, { useState } from 'react'
 
-import Image, { StaticImageData } from "next/image";
-import { SiFaceit } from "react-icons/si";
-import { ArrowLeft2, ArrowRight2 } from "iconsax-react";
-import { motion } from "framer-motion";
+import Image, { StaticImageData } from 'next/image'
+import { SiFaceit } from 'react-icons/si'
+import { ArrowLeft2, ArrowRight2 } from 'iconsax-react'
+import { motion } from 'framer-motion'
 
 const YouCanFInd = () => {
-  const [selected, setSeleted] = useState(0);
+  const [selected, setSeleted] = useState(0)
   return (
     <div className="container md:px-0 px-4 mx-auto py-8 md:mt-32">
       <div className="flex flex-col gap-4">
@@ -26,12 +26,12 @@ const YouCanFInd = () => {
               <div
                 key={i}
                 onMouseEnter={() => {
-                  setSeleted(i);
+                  setSeleted(i)
                 }}
                 className={`cursor-pointer ${
                   selected === i
-                    ? "translate-x-6 transition-transform duration-300 ease-in-out" // smoother transition
-                    : "translate-x-0 transition-transform duration-300 ease-in-out"
+                    ? 'translate-x-6 transition-transform duration-300 ease-in-out' // smoother transition
+                    : 'translate-x-0 transition-transform duration-300 ease-in-out'
                 }`}
               >
                 <div className="flex flex-row items-start gap-4">
@@ -41,14 +41,14 @@ const YouCanFInd = () => {
                   <div>
                     <h6
                       className={`text-2xl font-semibold ${
-                        selected === i ? "text-primary " : "text-secondary-grey"
+                        selected === i ? 'text-primary ' : 'text-secondary-grey'
                       } `}
                     >
                       {item.title}
                     </h6>
                     <p
                       className={`text-2xl font-semibold ${
-                        selected === i ? "text-black" : "text-secondary-grey"
+                        selected === i ? 'text-black' : 'text-secondary-grey'
                       } `}
                     >
                       {item.des}
@@ -56,7 +56,7 @@ const YouCanFInd = () => {
                   </div>
                 </div>
               </div>
-            );
+            )
           })}
         </div>
         <div className="flex flex-col gap-4">
@@ -67,8 +67,8 @@ const YouCanFInd = () => {
             <Image
               src={youCanFindJob[selected].img}
               alt=""
-              width={"512"}
-              height={"312"}
+              width={'512'}
+              height={'312'}
               className="w-full h-auto max-w-[512] absolute left-4 top-4"
               sizes="(min-width: 808px) 50vw, 100vw"
             />
@@ -79,53 +79,53 @@ const YouCanFInd = () => {
         <SlideContent award={youCanFindJob} />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default YouCanFInd;
+export default YouCanFInd
 
 interface ISlideContent {
   award: {
-    img: StaticImageData | string;
-    title: string;
-    des: string;
-  }[];
+    img: StaticImageData | string
+    title: string
+    des: string
+  }[]
 }
 
 const SlideContent = ({ award }: ISlideContent) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isAnimating, setIsAnimating] = useState(false)
 
   const handlePrevClick = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
+    if (isAnimating) return
+    setIsAnimating(true)
     setTimeout(() => {
       setCurrentIndex((prevIndex) =>
         prevIndex > 0 ? prevIndex - 1 : award.length - 1
-      );
-      setIsAnimating(false);
-    }, 500);
-  };
+      )
+      setIsAnimating(false)
+    }, 500)
+  }
 
   const handleNextClick = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
+    if (isAnimating) return
+    setIsAnimating(true)
     setTimeout(() => {
       setCurrentIndex((prevIndex) =>
         prevIndex < award.length - 1 ? prevIndex + 1 : 0
-      );
-      setIsAnimating(false);
-    }, 500);
-  };
+      )
+      setIsAnimating(false)
+    }, 500)
+  }
 
-  const currentItem = award[currentIndex];
+  const currentItem = award[currentIndex]
 
   return (
     <div className="">
       <motion.div
         className="relative"
         animate={{ opacity: isAnimating ? 0 : 1 }}
-        transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
+        transition={{ type: 'spring', bounce: 0.2, duration: 0.5 }}
       >
         <div
           className={`flex flex-col md:flex-row items-center justify-center gap-8`}
@@ -133,8 +133,8 @@ const SlideContent = ({ award }: ISlideContent) => {
           <Image
             src={currentItem.img}
             alt=""
-            width={"400"}
-            height={"400"}
+            width={'400'}
+            height={'400'}
             className="rounded-[16px] w-full h-auto max-w-[400px]"
             sizes="(min-width: 808px) 50vw, 100vw"
           />
@@ -168,5 +168,5 @@ const SlideContent = ({ award }: ISlideContent) => {
         </div>
       </motion.div>
     </div>
-  );
-};
+  )
+}

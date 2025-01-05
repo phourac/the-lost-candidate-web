@@ -1,6 +1,6 @@
-const ClientOS = "web";
-const ClientBundle = "com.bongtk.bloc";
-const CLIENT = "CLIENT";
+const ClientOS = 'web'
+const ClientBundle = 'com.bongtk.bloc'
+const CLIENT = 'CLIENT'
 export async function FetchServer(
   api: string,
   body: any,
@@ -10,20 +10,20 @@ export async function FetchServer(
     body,
     ...option,
     headers: {
-      ...option?.headers,
-    },
-  });
+      ...option?.headers
+    }
+  })
   // Check for errors
   if (!response.ok) {
-    throw new Error("Failed to fetch data");
+    throw new Error('Failed to fetch data')
   }
 
-  const responseData = await response.json();
+  const responseData = await response.json()
 
   // Check for error in response data
   if (responseData && responseData.error) {
-    throw new Error(responseData.message);
+    throw new Error(responseData.message)
   }
 
-  return responseData;
+  return responseData
 }

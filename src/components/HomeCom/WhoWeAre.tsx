@@ -1,6 +1,6 @@
-import { introduction, serviceA } from "@/utils/data-util";
-import React from "react";
-import Sevices from "../Services";
+import { introduction, serviceA } from '@/utils/data-util'
+import React from 'react'
+import Sevices from '../Services'
 
 const WhoWeAre = () => {
   return (
@@ -17,7 +17,7 @@ const WhoWeAre = () => {
       </div>
       <Sevices introduction={introduction} />
     </>
-  );
-};
+  )
+}
 
-export default WhoWeAre;
+export default WhoWeAre

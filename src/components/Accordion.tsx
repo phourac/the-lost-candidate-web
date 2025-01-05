@@ -1,35 +1,35 @@
-"use client";
-import { useState } from "react";
+'use client'
+import { useState } from 'react'
 
 export function Accordion() {
   const questions = [
     {
-      question: "How can I get started?",
+      question: 'How can I get started?',
       answer:
-        "Getting started is easy! Sign up for an account, and you'll have access to our platform's features. No credit card required for the initial signup.",
+        "Getting started is easy! Sign up for an account, and you'll have access to our platform's features. No credit card required for the initial signup."
     },
     {
-      question: "What is the pricing structure?",
+      question: 'What is the pricing structure?',
       answer:
-        "Our pricing structure is flexible. We offer both free and paid plans. You can choose the one that suits your needs and budget.",
+        'Our pricing structure is flexible. We offer both free and paid plans. You can choose the one that suits your needs and budget.'
     },
     {
-      question: "What kind of support do you provide?",
+      question: 'What kind of support do you provide?',
       answer:
-        "We offer comprehensive customer support. You can reach out to our support team through various channels, including email, chat, and a knowledge base.",
+        'We offer comprehensive customer support. You can reach out to our support team through various channels, including email, chat, and a knowledge base.'
     },
     {
-      question: "Can I cancel my subscription anytime?",
+      question: 'Can I cancel my subscription anytime?',
       answer:
-        "Yes, you can cancel your subscription at any time without any hidden fees. We believe in providing a hassle-free experience for our users.",
-    },
-  ];
+        'Yes, you can cancel your subscription at any time without any hidden fees. We believe in providing a hassle-free experience for our users.'
+    }
+  ]
 
-  const [openQuestion, setOpenQuestion] = useState(null);
+  const [openQuestion, setOpenQuestion] = useState(null)
 
   const toggleQuestion = (index: any) => {
-    setOpenQuestion(openQuestion === index ? null : index);
-  };
+    setOpenQuestion(openQuestion === index ? null : index)
+  }
 
   return (
     <section className="py-10 bg-gray-50 sm:py-16 lg:py-24">
@@ -55,7 +55,7 @@ export function Accordion() {
                 </span>
                 <svg
                   className={`w-6 h-6 text-gray-400 transition-transform duration-200 ${
-                    openQuestion === index ? "rotate-0" : "-rotate-180"
+                    openQuestion === index ? 'rotate-0' : '-rotate-180'
                   }`}
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -86,7 +86,7 @@ export function Accordion() {
         </p>
       </div>
     </section>
-  );
+  )
 }
 
-export default Accordion;
+export default Accordion

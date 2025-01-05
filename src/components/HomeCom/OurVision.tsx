@@ -1,6 +1,6 @@
-import { vision } from "@/utils/data-util";
-import Image from "next/image";
-import React from "react";
+import { vision } from '@/utils/data-util'
+import Image from 'next/image'
+import React from 'react'
 
 const OurVision = () => {
   return (
@@ -36,7 +36,7 @@ const OurVision = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default OurVision;
+export default OurVision

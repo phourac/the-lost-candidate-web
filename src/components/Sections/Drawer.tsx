@@ -1,35 +1,35 @@
-"use client";
+'use client'
 
-import { Dispatch, Fragment, ReactNode, SetStateAction } from "react";
+import { Dispatch, Fragment, ReactNode, SetStateAction } from 'react'
 
 import {
   Dialog,
   DialogPanel,
   DialogTitle,
   Transition,
-  TransitionChild,
-} from "@headlessui/react";
-import { IoMdClose } from "react-icons/io";
-import Image from "next/image";
-import { Link } from "@/hooks/useNavigation";
+  TransitionChild
+} from '@headlessui/react'
+import { IoMdClose } from 'react-icons/io'
+import Image from 'next/image'
+import { Link } from '@/hooks/useNavigation'
 
 export default function Drawer({
   isOpen,
   setIsOpen,
-  children,
+  children
 }: {
-  isOpen: boolean;
-  setIsOpen: Dispatch<SetStateAction<boolean>>;
-  children: ReactNode;
+  isOpen: boolean
+  setIsOpen: Dispatch<SetStateAction<boolean>>
+  children: ReactNode
 }) {
   //   let [isOpen, setIsOpen] = useState(true);
 
   function closeModal() {
-    setIsOpen(false);
+    setIsOpen(false)
   }
 
   function openModal() {
-    setIsOpen(true);
+    setIsOpen(true)
   }
 
   return (
@@ -85,5 +85,5 @@ export default function Drawer({
         </Dialog>
       </Transition>
     </>
-  );
+  )
 }

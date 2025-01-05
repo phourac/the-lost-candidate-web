@@ -1,11 +1,11 @@
 export const Pagination = ({
   currentPage,
   totalPages,
-  onPageChange,
+  onPageChange
 }: {
-  currentPage: number;
-  totalPages: number;
-  onPageChange: (newPage: number) => void;
+  currentPage: number
+  totalPages: number
+  onPageChange: (newPage: number) => void
 }) => {
   return (
     <div className="flex items-center justify-center p-4">
@@ -33,8 +33,8 @@ export const Pagination = ({
           key={index}
           className={`px-3 py-2 rounded-md ${
             currentPage === index + 1
-              ? "bg-blue-500 text-white"
-              : "bg-gray-100 text-gray-400 hover:bg-secondary/50"
+              ? 'bg-blue-500 text-white'
+              : 'bg-gray-100 text-gray-400 hover:bg-secondary/50'
           }`}
           onClick={() => onPageChange(index + 1)}
         >
@@ -61,5 +61,5 @@ export const Pagination = ({
         </svg>
       </button>
     </div>
-  );
-};
+  )
+}

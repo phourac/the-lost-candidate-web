@@ -1,39 +1,39 @@
-"use client";
-import { languages } from "@/utils/data-util";
+'use client'
+import { languages } from '@/utils/data-util'
 import {
   Menu,
   MenuButton,
   MenuItem,
   MenuItems,
-  Transition,
-} from "@headlessui/react";
-import { useLocale } from "next-intl";
-import { usePathname, useRouter } from "next/navigation";
-import { Fragment } from "react";
-import { FaCaretDown } from "react-icons/fa";
+  Transition
+} from '@headlessui/react'
+import { useLocale } from 'next-intl'
+import { usePathname, useRouter } from 'next/navigation'
+import { Fragment } from 'react'
+import { FaCaretDown } from 'react-icons/fa'
 
 interface ISeletecLang {
-  langs: string;
-  setLangs: React.Dispatch<React.SetStateAction<string>>;
+  langs: string
+  setLangs: React.Dispatch<React.SetStateAction<string>>
 }
 
 export default function SelectLang({ langs, setLangs }: ISeletecLang) {
-  const router = useRouter();
+  const router = useRouter()
 
-  const locale = useLocale();
+  const locale = useLocale()
 
-  const pathname = usePathname();
+  const pathname = usePathname()
 
-  console.log("pathname", pathname.split("/")[2]);
+  console.log('pathname', pathname.split('/')[2])
 
   const defaultPathname =
-    pathname.split("/")[2] === undefined ? "" : pathname.split("/")[2];
+    pathname.split('/')[2] === undefined ? '' : pathname.split('/')[2]
 
-  console.log("defaultPathname", defaultPathname);
+  console.log('defaultPathname', defaultPathname)
 
-  const defaultLang = languages.find((item) => item.value === locale)?.lang;
+  const defaultLang = languages.find((item) => item.value === locale)?.lang
 
-  console.log("defaultLang", defaultLang);
+  console.log('defaultLang', defaultLang)
   return (
     <Menu as="div" className="relative inline-block text-left z-10">
       <div>
@@ -58,11 +58,11 @@ export default function SelectLang({ langs, setLangs }: ISeletecLang) {
             <MenuItem key={item.value}>
               <button
                 onClick={() => {
-                  setLangs(item.lang);
-                  router.replace(`/${item.value}/${defaultPathname}`);
+                  setLangs(item.lang)
+                  router.replace(`/${item.value}/${defaultPathname}`)
                 }}
                 className={`bg-white/10 group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 hover:text-primary ${
-                  item.value === locale ? "text-primary" : ""
+                  item.value === locale ? 'text-primary' : ''
                 }`}
               >
                 {item.lang}
@@ -72,5 +72,5 @@ export default function SelectLang({ langs, setLangs }: ISeletecLang) {
         </MenuItems>
       </Transition>
     </Menu>
-  );
+  )
 }

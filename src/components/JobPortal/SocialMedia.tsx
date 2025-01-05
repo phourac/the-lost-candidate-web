@@ -1,28 +1,28 @@
-"use client";
-import { useRequest } from "ahooks";
-import Link from "next/link";
-import { useState } from "react";
-import { SearchBar } from "../SearchBar";
-import { Pagination } from "../Pagination";
-import SOCIALMEDIA_API from "@/api/Socialmedia";
+'use client'
+import { useRequest } from 'ahooks'
+import Link from 'next/link'
+import { useState } from 'react'
+import { SearchBar } from '../SearchBar'
+import { Pagination } from '../Pagination'
+import SOCIALMEDIA_API from '@/api/Socialmedia'
 
 function SocialMedia() {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1)
 
   const {
     data: listSocialMedia,
     loading: loadingListSocialMedia,
     error: errorListSocialMedia,
-    refresh: refreshListSocialMedia,
-  } = useRequest(() => SOCIALMEDIA_API.getListSocialMedia("", currentPage), {
-    refreshDeps: [currentPage],
-  });
+    refresh: refreshListSocialMedia
+  } = useRequest(() => SOCIALMEDIA_API.getListSocialMedia('', currentPage), {
+    refreshDeps: [currentPage]
+  })
 
   const handlePageChange = (newPage: number) => {
     if (newPage > 0 && newPage <= listSocialMedia?.meta.totalPages!) {
-      setCurrentPage(newPage);
+      setCurrentPage(newPage)
     }
-  };
+  }
 
   return (
     <>
@@ -69,7 +69,7 @@ function SocialMedia() {
                       <td colSpan={6}>
                         <div
                           className="flex justify-center items-center text-center"
-                          style={{ height: "500px" }}
+                          style={{ height: '500px' }}
                         >
                           Loading...
                         </div>
@@ -82,7 +82,7 @@ function SocialMedia() {
                       <td colSpan={6}>
                         <div
                           className="flex justify-center items-center text-center"
-                          style={{ height: "500px" }}
+                          style={{ height: '500px' }}
                         >
                           Error
                         </div>
@@ -95,7 +95,7 @@ function SocialMedia() {
                       <td colSpan={6}>
                         <div
                           className="flex justify-center items-center text-center"
-                          style={{ height: "500px" }}
+                          style={{ height: '500px' }}
                         >
                           No Data
                         </div>
@@ -105,7 +105,7 @@ function SocialMedia() {
                 ) : (
                   <tbody>
                     {listSocialMedia?.data.map((user, index) => {
-                      const indexUniqe = index + 1 + (currentPage - 1) * 10;
+                      const indexUniqe = index + 1 + (currentPage - 1) * 10
 
                       return (
                         <tr
@@ -135,7 +135,7 @@ function SocialMedia() {
                             {user.focus?.toUpperCase()}
                           </td>
                         </tr>
-                      );
+                      )
                     })}
                   </tbody>
                 )}
@@ -150,7 +150,7 @@ function SocialMedia() {
         />
       </div>
     </>
-  );
+  )
 }
 
-export default SocialMedia;
+export default SocialMedia

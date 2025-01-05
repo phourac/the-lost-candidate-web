@@ -1,44 +1,44 @@
-"use client";
-import React, { useState } from "react";
-import Image from "next/image";
+'use client'
+import React, { useState } from 'react'
+import Image from 'next/image'
 import {
   Disclosure,
   DisclosureButton,
   DisclosurePanel,
-  Menu,
-} from "@headlessui/react";
-import { TbMenu2 } from "react-icons/tb";
-import Drawer from "./Drawer";
-import SelectLang from "../SelectLang";
-import { IoChevronDown } from "react-icons/io5";
-import { languages, navbar } from "@/utils/data-util";
-import { useLocale, useTranslations } from "next-intl";
-import { Link } from "@/hooks/useNavigation";
-import { usePathname, useRouter } from "next/navigation";
-import { motion } from "framer-motion";
-import { IoMdClose } from "react-icons/io";
+  Menu
+} from '@headlessui/react'
+import { TbMenu2 } from 'react-icons/tb'
+import Drawer from './Drawer'
+import SelectLang from '../SelectLang'
+import { IoChevronDown } from 'react-icons/io5'
+import { languages, navbar } from '@/utils/data-util'
+import { useLocale, useTranslations } from 'next-intl'
+import { Link } from '@/hooks/useNavigation'
+import { usePathname, useRouter } from 'next/navigation'
+import { motion } from 'framer-motion'
+import { IoMdClose } from 'react-icons/io'
 
 function Navbar() {
-  const locale = useLocale();
-  const router = useRouter();
+  const locale = useLocale()
+  const router = useRouter()
 
-  const pathname = usePathname();
+  const pathname = usePathname()
 
-  console.log("pathname", pathname);
+  console.log('pathname', pathname)
 
-  const cleanPathname = pathname.replace(`/${locale}`, "") || "/";
+  const cleanPathname = pathname.replace(`/${locale}`, '') || '/'
 
-  console.log("cleanPathname", cleanPathname);
+  console.log('cleanPathname', cleanPathname)
 
-  console.log("navbar", navbar);
+  console.log('navbar', navbar)
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
-  const [langs, setLangs] = useState(locale);
+  const [langs, setLangs] = useState(locale)
 
-  const t = useTranslations("Index");
+  const t = useTranslations('Index')
 
-  const defaultLang = languages.find((item) => item.value === locale)?.lang;
+  const defaultLang = languages.find((item) => item.value === locale)?.lang
 
   return (
     <>
@@ -67,12 +67,12 @@ function Navbar() {
                     // transition={{ type: "spring", stiffness: 400, damping: 17 }}
                     className={` lg:px-[16px] px-[8px]  text-base ${
                       item.value === cleanPathname
-                        ? "text-primary"
-                        : " text-secondary-dark"
+                        ? 'text-primary'
+                        : ' text-secondary-dark'
                     } ${
                       item.value === cleanPathname
-                        ? "font-semibold"
-                        : "font-medium"
+                        ? 'font-semibold'
+                        : 'font-medium'
                     } whitespace-nowrap hover:text-primary`}
                   >
                     {t(item.title)}
@@ -80,7 +80,7 @@ function Navbar() {
                 </Link>
               </React.Fragment>
             ))}
-           
+
             <SelectLang {...{ langs, setLangs }} />
           </span>
           <button
@@ -91,7 +91,7 @@ function Navbar() {
               initial={false}
               animate={{
                 scale: isOpen ? 1 : 1.1,
-                rotate: isOpen ? 90 : 0, // Rotate 90 degrees when closing menu
+                rotate: isOpen ? 90 : 0 // Rotate 90 degrees when closing menu
               }}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9, rotate: 90 }}
@@ -109,17 +109,17 @@ function Navbar() {
             key={i}
             href={m.value}
             className={`${
-              cleanPathname === m.value ? "text-primary" : ""
+              cleanPathname === m.value ? 'text-primary' : ''
             } flex items-center justify-center h-14 border-b hover:text-primary-hight-light hover:bg-gray-50`}
             onClick={() => {
-              setIsOpen(false);
+              setIsOpen(false)
             }}
           >
             <span className="text-sm font-semibold">{m.title}</span>
           </Link>
         ))}
         <Menu
-          as={"div"}
+          as={'div'}
           className="mx-auto w-full divide-y divide-white/5 rounded-xl bg-white/5 border-b  hover:bg-gray-50"
         >
           <Disclosure as="div" className="p-6 ">
@@ -127,10 +127,10 @@ function Navbar() {
               <>
                 <DisclosureButton className="group flex w-full items-center justify-center ">
                   <span className="flex items-center text-secondary-dark text-sm font-semibold">
-                    {defaultLang}{" "}
+                    {defaultLang}{' '}
                     <IoChevronDown
                       className={`${
-                        open ? "rotate-180 transform" : ""
+                        open ? 'rotate-180 transform' : ''
                       } size-5 fill-white/60 group-data-[hover]:fill-white/50 group-data-[open]:rotate-180`}
                     />
                   </span>
@@ -139,12 +139,12 @@ function Navbar() {
                   <DisclosurePanel
                     key={item.value}
                     className={`mt-4 text-sm/5 items-center justify-center flex cursor-pointer hover:text-primary ${
-                      locale === item.value ? "text-primary" : ""
+                      locale === item.value ? 'text-primary' : ''
                     }`}
                     onClick={() => {
-                      setLangs(item.lang);
-                      router.replace(`/${item.value}`);
-                      setIsOpen(false);
+                      setLangs(item.lang)
+                      router.replace(`/${item.value}`)
+                      setIsOpen(false)
                     }}
                   >
                     {item.lang}
@@ -156,7 +156,7 @@ function Navbar() {
         </Menu>
       </Drawer>
     </>
-  );
+  )
 }
 
-export default Navbar;
+export default Navbar

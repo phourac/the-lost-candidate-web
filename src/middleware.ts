@@ -1,33 +1,33 @@
-import createMiddleware from "next-intl/middleware";
-import { localePrefix, locales } from "./hooks/useNavigation";
-import { NextRequest, NextResponse } from "next/server";
+import createMiddleware from 'next-intl/middleware'
+import { localePrefix, locales } from './hooks/useNavigation'
+import { NextRequest, NextResponse } from 'next/server'
 
 const intlMiddelware = createMiddleware({
-  defaultLocale: "en",
+  defaultLocale: 'en',
   localePrefix,
-  locales,
-});
+  locales
+})
 
-const PUBLIC_FILE = /^(\/.*\..*|\/public\/.*)$/;
+const PUBLIC_FILE = /^(\/.*\..*|\/public\/.*)$/
 
 export default function middleware(req: NextRequest) {
-  const { pathname } = req.nextUrl;
+  const { pathname } = req.nextUrl
 
   if (PUBLIC_FILE.test(pathname)) {
-    return NextResponse.next();
+    return NextResponse.next()
   }
 
-  return intlMiddelware(req);
+  return intlMiddelware(req)
 }
 
 export const config = {
   // Match only internationalized pathnames
   matcher: [
-    "/",
-    "/(kh|en)/:path*",
-    "/((?!_next).*)",
-    "/((?!api|_next|_vercel|.*\\..*).*)",
+    '/',
+    '/(kh|en)/:path*',
+    '/((?!_next).*)',
+    '/((?!api|_next|_vercel|.*\\..*).*)',
     // However, match all pathnames within `/users`, optionally with a locale prefix
-    "/([\\w-]+)?/users/(.+)",
-  ],
-};
+    '/([\\w-]+)?/users/(.+)'
+  ]
+}

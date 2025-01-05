@@ -1,30 +1,30 @@
-"use client";
-import REFERENCE_API from "@/api/Reference";
-import { useRequest } from "ahooks";
-import Link from "next/link";
-import { useState } from "react";
-import { FaApple } from "react-icons/fa";
-import { IoLogoGooglePlaystore } from "react-icons/io5";
-import { SearchBar } from "../SearchBar";
-import { Pagination } from "../Pagination";
+'use client'
+import REFERENCE_API from '@/api/Reference'
+import { useRequest } from 'ahooks'
+import Link from 'next/link'
+import { useState } from 'react'
+import { FaApple } from 'react-icons/fa'
+import { IoLogoGooglePlaystore } from 'react-icons/io5'
+import { SearchBar } from '../SearchBar'
+import { Pagination } from '../Pagination'
 
 function WebsiteApp() {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1)
 
   const {
     data: listReference,
     loading: loadingListReference,
     error: errorListReference,
-    refresh: refreshListReference,
-  } = useRequest(() => REFERENCE_API.getListReference("", currentPage), {
-    refreshDeps: [currentPage],
-  });
+    refresh: refreshListReference
+  } = useRequest(() => REFERENCE_API.getListReference('', currentPage), {
+    refreshDeps: [currentPage]
+  })
 
   const handlePageChange = (newPage: number) => {
     if (newPage > 0 && newPage <= listReference?.meta.totalPages!) {
-      setCurrentPage(newPage);
+      setCurrentPage(newPage)
     }
-  };
+  }
 
   return (
     <>
@@ -74,7 +74,7 @@ function WebsiteApp() {
                       <td colSpan={6}>
                         <div
                           className="flex justify-center items-center text-center"
-                          style={{ height: "500px" }}
+                          style={{ height: '500px' }}
                         >
                           Loading...
                         </div>
@@ -87,7 +87,7 @@ function WebsiteApp() {
                       <td colSpan={6}>
                         <div
                           className="flex justify-center items-center text-center"
-                          style={{ height: "500px" }}
+                          style={{ height: '500px' }}
                         >
                           Error
                         </div>
@@ -100,7 +100,7 @@ function WebsiteApp() {
                       <td colSpan={6}>
                         <div
                           className="flex justify-center items-center text-center"
-                          style={{ height: "500px" }}
+                          style={{ height: '500px' }}
                         >
                           No Data
                         </div>
@@ -110,7 +110,7 @@ function WebsiteApp() {
                 ) : (
                   <tbody>
                     {listReference?.data.map((user, index) => {
-                      const indexUniqe = index + 1 + (currentPage - 1) * 10;
+                      const indexUniqe = index + 1 + (currentPage - 1) * 10
 
                       return (
                         <tr
@@ -152,13 +152,13 @@ function WebsiteApp() {
                               >
                                 <IoLogoGooglePlaystore size={16} />
                               </Link>
-                            )}{" "}
+                            )}{' '}
                           </td>
                           <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                             {user.focus?.toUpperCase()}
                           </td>
                         </tr>
-                      );
+                      )
                     })}
                   </tbody>
                 )}
@@ -166,9 +166,6 @@ function WebsiteApp() {
             </div>
           </div>
         </div>
-     
-
-
 
         <Pagination
           currentPage={currentPage}
@@ -177,7 +174,7 @@ function WebsiteApp() {
         />
       </div>
     </>
-  );
+  )
 }
 
-export default WebsiteApp;
+export default WebsiteApp

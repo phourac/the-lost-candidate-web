@@ -1,123 +1,120 @@
-'use client';
+'use client'
 
-import INTERVIEW_API from '@/api/Interview';
-import Drawer from '@/components/Drawer';
-import { Pagination } from '@/components/Pagination';
-import { useRequest } from 'ahooks';
-import React, { useEffect, useState } from 'react';
-import { useForm, Controller, useFieldArray } from 'react-hook-form';
-import { FaEdit, FaTrash, FaPlus } from 'react-icons/fa';
+import INTERVIEW_API from '@/api/Interview'
+import Drawer from '@/components/Drawer'
+import { Pagination } from '@/components/Pagination'
+import { useRequest } from 'ahooks'
+import React, { useEffect, useState } from 'react'
+import { useForm, Controller, useFieldArray } from 'react-hook-form'
+import { FaEdit, FaTrash, FaPlus } from 'react-icons/fa'
 
 // Interface for the Interview Tip
 interface ICreateInterview {
-  question: string;
-  answer: string[];
+  question: string
+  answer: string[]
 }
 
 function InterviewTips() {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [id, setId] = useState('');
-  console.log('id', id);
+  const [currentPage, setCurrentPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(1)
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+  const [id, setId] = useState('')
+  console.log('id', id)
 
   // Initialize the form with react-hook-form
   const { control, handleSubmit, reset, setValue } = useForm<ICreateInterview>({
     defaultValues: {
       question: '',
-      answer: [''], // Default to one empty answer
-    },
-  });
+      answer: [''] // Default to one empty answer
+    }
+  })
   const { fields, append, remove } = useFieldArray<ICreateInterview>({
     control,
     //@ts-ignore
-    name: 'answer', // The name of the array field for answers
-  });
+    name: 'answer' // The name of the array field for answers
+  })
 
   const {
     data: listInterview,
     loading: loadingListInterview,
     error: errorListInterview,
-    refresh: refreshListInterview,
-  } = useRequest(
-    () => INTERVIEW_API.getListReference('', currentPage,10),
-    {
-      refreshDeps: [currentPage],
-      onSuccess: (data) => {
-        setTotalPages(data.meta.totalPages);
-      },
+    refresh: refreshListInterview
+  } = useRequest(() => INTERVIEW_API.getListReference('', currentPage, 10), {
+    refreshDeps: [currentPage],
+    onSuccess: (data) => {
+      setTotalPages(data.meta.totalPages)
     }
-  );
+  })
 
   const { data: detailInterview } = useRequest(
     () => INTERVIEW_API.detailInterview(id),
     {
       refreshDeps: [id],
-      ready: !!id,
+      ready: !!id
     }
-  );
+  )
 
   const { run: runCreate } = useRequest(INTERVIEW_API.createInterview, {
     manual: true,
     onSuccess: () => {
-      refreshListInterview();
-    },
-  });
+      refreshListInterview()
+    }
+  })
   const { run: runDelete } = useRequest(INTERVIEW_API.deleteInterview, {
     manual: true,
     onSuccess: () => {
-      refreshListInterview();
-    },
-  });
-   const { run: runUpdate } = useRequest(INTERVIEW_API.updateInterview, {
+      refreshListInterview()
+    }
+  })
+  const { run: runUpdate } = useRequest(INTERVIEW_API.updateInterview, {
     manual: true,
     onSuccess: () => {
-      refreshListInterview();
-    },
-  });
+      refreshListInterview()
+    }
+  })
 
   const handlePageChange = (newPage: number) => {
     if (newPage > 0 && newPage <= totalPages) {
-      setCurrentPage(newPage);
+      setCurrentPage(newPage)
     }
-  };
+  }
 
   const handleCreate = () => {
-    setIsDrawerOpen(true);
-  };
+    setIsDrawerOpen(true)
+  }
 
   const handleEdit = (id: string) => {
-    setIsDrawerOpen(true);
-    setId(id);
-  };
+    setIsDrawerOpen(true)
+    setId(id)
+  }
 
   const handleDelete = (id: string) => {
-    runDelete(id);
-  };
+    runDelete(id)
+  }
 
   // Handle form submission
   const onSubmit = (data: ICreateInterview) => {
     const payload = {
       question: data.question, // This will be the string value
-      answer: data.answer,     // This will be the array of answers
-    };
+      answer: data.answer // This will be the array of answers
+    }
 
     // Call the API with the payload
     if (id) {
-    runUpdate(id,payload)
+      runUpdate(id, payload)
     } else {
-    runCreate(payload); 
+      runCreate(payload)
     }
-    reset(); // Reset form after submit
-    setIsDrawerOpen(false); // Close the drawer
-  };
+    reset() // Reset form after submit
+    setIsDrawerOpen(false) // Close the drawer
+  }
 
   useEffect(() => {
     if (detailInterview) {
-      setValue('question', detailInterview.data.question);
-      setValue('answer', detailInterview.data.answer);
+      setValue('question', detailInterview.data.question)
+      setValue('answer', detailInterview.data.answer)
     }
-  }, [setValue, detailInterview]);
+  }, [setValue, detailInterview])
 
   return (
     <div className="flex flex-col w-full pb-16">
@@ -139,7 +136,9 @@ function InterviewTips() {
         <form onSubmit={handleSubmit(onSubmit)}>
           {/* Question Field */}
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">Question</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Question
+            </label>
             <Controller
               name="question"
               control={control}
@@ -157,7 +156,9 @@ function InterviewTips() {
 
           {/* Answer Fields */}
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">Answer(s)</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Answer(s)
+            </label>
             {fields.map((item, index) => (
               <div key={item.id} className="flex items-center space-x-4 mb-2">
                 <Controller
@@ -185,7 +186,7 @@ function InterviewTips() {
             <button
               type="button"
               className="text-blue-600 hover:text-blue-800"
-                  //@ts-ignore
+              //@ts-ignore
               onClick={() => append('')} // Append a new answer
             >
               Add Answer
@@ -201,43 +202,64 @@ function InterviewTips() {
             <table className="min-w-full w-full">
               <thead className="border-b bg-gray-100">
                 <tr>
-                  <th className="text-sm font-medium text-gray-900 px-6 py-4 text-left">#</th>
-                  <th className="text-sm font-medium text-gray-900 px-6 py-4 text-left">Question</th>
-                  <th className="text-sm font-medium text-gray-900 px-6 py-4 text-left">Answer</th>
-                  <th className="text-sm font-medium text-gray-900 px-6 py-4 text-left">Action</th>
+                  <th className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                    #
+                  </th>
+                  <th className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                    Question
+                  </th>
+                  <th className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                    Answer
+                  </th>
+                  <th className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                    Action
+                  </th>
                 </tr>
               </thead>
               {loadingListInterview ? (
                 <tbody>
                   <tr>
-                    <td colSpan={4} className="text-center py-16">Loading...</td>
+                    <td colSpan={4} className="text-center py-16">
+                      Loading...
+                    </td>
                   </tr>
                 </tbody>
               ) : errorListInterview ? (
                 <tbody>
                   <tr>
-                    <td colSpan={4} className="text-center py-16">Error</td>
+                    <td colSpan={4} className="text-center py-16">
+                      Error
+                    </td>
                   </tr>
                 </tbody>
               ) : listInterview?.data.length === 0 ? (
                 <tbody>
                   <tr>
-                    <td colSpan={4} className="text-center py-16">No Data</td>
+                    <td colSpan={4} className="text-center py-16">
+                      No Data
+                    </td>
                   </tr>
                 </tbody>
               ) : (
                 <tbody>
                   {listInterview?.data.map((user, index) => {
-                    const uniqueIndex = index + 1 + (currentPage - 1) * 10;
+                    const uniqueIndex = index + 1 + (currentPage - 1) * 10
                     return (
-                      <tr key={user._id} className="bg-white border-b hover:bg-gray-100">
-                        <td className="px-6 py-4 text-sm font-medium text-gray-900">{uniqueIndex}</td>
-                        <td className="px-6 py-4 text-sm text-gray-900">{user.question}</td>
-                         <td className="px-6 py-4 text-sm text-gray-900">
-                           {user.answer.map((sol, idx) => (
+                      <tr
+                        key={user._id}
+                        className="bg-white border-b hover:bg-gray-100"
+                      >
+                        <td className="px-6 py-4 text-sm font-medium text-gray-900">
+                          {uniqueIndex}
+                        </td>
+                        <td className="px-6 py-4 text-sm text-gray-900">
+                          {user.question}
+                        </td>
+                        <td className="px-6 py-4 text-sm text-gray-900">
+                          {user.answer.map((sol, idx) => (
                             <div key={idx}>+{sol}</div> // Display each solution in its own div
-                            ))}
-                         </td>
+                          ))}
+                        </td>
                         <td className="px-6 py-4 text-sm text-gray-900 flex space-x-4">
                           <button
                             className="text-blue-600 hover:text-blue-800"
@@ -253,7 +275,7 @@ function InterviewTips() {
                           </button>
                         </td>
                       </tr>
-                    );
+                    )
                   })}
                 </tbody>
               )}
@@ -268,7 +290,7 @@ function InterviewTips() {
         onPageChange={handlePageChange}
       />
     </div>
-  );
+  )
 }
 
-export default InterviewTips;
+export default InterviewTips

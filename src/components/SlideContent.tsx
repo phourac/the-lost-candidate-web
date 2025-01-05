@@ -1,53 +1,53 @@
-"use client";
-import { ArrowLeft2, ArrowRight2 } from "iconsax-react";
-import Image, { StaticImageData } from "next/image";
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+'use client'
+import { ArrowLeft2, ArrowRight2 } from 'iconsax-react'
+import Image, { StaticImageData } from 'next/image'
+import React, { useState } from 'react'
+import { motion } from 'framer-motion'
 
 interface ISlideContent {
   award: {
-    img: StaticImageData | string;
-    title: string;
-    des: string;
-    speaker: string;
-  }[];
-  flex: "flex-row" | "flex-row-reverse";
+    img: StaticImageData | string
+    title: string
+    des: string
+    speaker: string
+  }[]
+  flex: 'flex-row' | 'flex-row-reverse'
 }
 
 const SlideContent = ({ award, flex }: ISlideContent) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isAnimating, setIsAnimating] = useState(false)
 
   const handlePrevClick = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
+    if (isAnimating) return
+    setIsAnimating(true)
     setTimeout(() => {
       setCurrentIndex((prevIndex) =>
         prevIndex > 0 ? prevIndex - 1 : award.length - 1
-      );
-      setIsAnimating(false);
-    }, 500);
-  };
+      )
+      setIsAnimating(false)
+    }, 500)
+  }
 
   const handleNextClick = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
+    if (isAnimating) return
+    setIsAnimating(true)
     setTimeout(() => {
       setCurrentIndex((prevIndex) =>
         prevIndex < award.length - 1 ? prevIndex + 1 : 0
-      );
-      setIsAnimating(false);
-    }, 500);
-  };
+      )
+      setIsAnimating(false)
+    }, 500)
+  }
 
-  const currentItem = award[currentIndex];
+  const currentItem = award[currentIndex]
 
   return (
     <div className="container md:px-4 px-4 mx-auto bg-primary-content rounded-[32px]">
       <motion.div
         className="relative"
         animate={{ opacity: isAnimating ? 0 : 1 }}
-        transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
+        transition={{ type: 'spring', bounce: 0.2, duration: 0.5 }}
       >
         <div
           className={`flex flex-col md:${flex} items-center justify-center p-[32px] gap-8`}
@@ -55,8 +55,8 @@ const SlideContent = ({ award, flex }: ISlideContent) => {
           <Image
             src={currentItem.img}
             alt=""
-            width={"400"}
-            height={"400"}
+            width={'400'}
+            height={'400'}
             className="rounded-[16px] w-full h-auto max-w-[400px]"
             sizes="(min-width: 808px) 50vw, 100vw"
           />
@@ -90,7 +90,7 @@ const SlideContent = ({ award, flex }: ISlideContent) => {
         </div>
       </motion.div>
     </div>
-  );
-};
+  )
+}
 
-export default SlideContent;
+export default SlideContent

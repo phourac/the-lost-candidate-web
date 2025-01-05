@@ -1,42 +1,42 @@
-"use client";
-import lottie, { AnimationItem } from "lottie-web";
-import * as React from "react";
+'use client'
+import lottie, { AnimationItem } from 'lottie-web'
+import * as React from 'react'
 
 const LottieAnimation = ({
   animationData,
-  scroll,
+  scroll
 }: {
-  animationData: any;
-  scroll: boolean;
+  animationData: any
+  scroll: boolean
 }) => {
-  const anime = React.useRef<HTMLDivElement>(null);
-  const anim = React.useRef<AnimationItem>();
+  const anime = React.useRef<HTMLDivElement>(null)
+  const anim = React.useRef<AnimationItem>()
 
   React.useEffect(() => {
     if (anime.current) {
       anim.current = lottie.loadAnimation({
         container: anime.current,
-        renderer: "svg",
+        renderer: 'svg',
         loop: scroll,
         autoplay: scroll,
-        animationData,
-      });
+        animationData
+      })
     }
 
     return () => {
       if (anim.current) {
-        anim.current.destroy();
+        anim.current.destroy()
       }
-    };
-  }, [animationData, scroll]);
+    }
+  }, [animationData, scroll])
 
   React.useEffect(() => {
     if (anim.current) {
-      anim.current.playSegments([0, 70], true);
+      anim.current.playSegments([0, 70], true)
     }
-  }, [scroll]);
+  }, [scroll])
 
-  return <div ref={anime} />;
-};
+  return <div ref={anime} />
+}
 
-export default LottieAnimation;
+export default LottieAnimation

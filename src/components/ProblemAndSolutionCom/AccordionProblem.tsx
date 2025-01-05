@@ -1,33 +1,33 @@
-"use client";
-import PROBLEM_API from "@/api/Problem";
-import { useRequest } from "ahooks";
-import { useState } from "react";
-import { Pagination } from "../Pagination";
+'use client'
+import PROBLEM_API from '@/api/Problem'
+import { useRequest } from 'ahooks'
+import { useState } from 'react'
+import { Pagination } from '../Pagination'
 
 export function AccordionProblem() {
-  const [openQuestion, setOpenQuestion] = useState(null);
+  const [openQuestion, setOpenQuestion] = useState(null)
 
-  const [currentPage, setCurrentPage] = useState(1); // Initialize current page
-  const [totalPages, setTotalPages] = useState(1); // Initialize total pages
+  const [currentPage, setCurrentPage] = useState(1) // Initialize current page
+  const [totalPages, setTotalPages] = useState(1) // Initialize total pages
   const {
     data: listInterview,
     loading: loadingListInterview,
     error: errorListInterview,
-    refresh: refreshListInterview,
-  } = useRequest(() => PROBLEM_API.getListProblem("", currentPage), {
+    refresh: refreshListInterview
+  } = useRequest(() => PROBLEM_API.getListProblem('', currentPage), {
     refreshDeps: [currentPage!!],
     onSuccess: (data) => {
-      setTotalPages(data.meta.totalPages);
-    },
-  });
+      setTotalPages(data.meta.totalPages)
+    }
+  })
 
   const onPageChange = (page: number) => {
-    setCurrentPage(page); // Update current page when pagination is changed
-  };
+    setCurrentPage(page) // Update current page when pagination is changed
+  }
 
   const toggleQuestion = (index: any) => {
-    setOpenQuestion(openQuestion === index ? null : index);
-  };
+    setOpenQuestion(openQuestion === index ? null : index)
+  }
 
   return (
     <section className="py-2 bg-gray-50 ">
@@ -35,7 +35,7 @@ export function AccordionProblem() {
         <div className="flex flex-col items-center gap-4 pt-8 pb-8 px-4">
           <h1 className="text-primary md:text-3xl text-xl font-bold uppercase text-center">
             Explore Common Problem And Solution
-          </h1>{" "}
+          </h1>{' '}
           <h6 className="md:text-lg text-md text-center">
             Here are some common problems that students face, along with
             potential solutions based on previous experiences
@@ -44,9 +44,9 @@ export function AccordionProblem() {
         {loadingListInterview ? (
           <div
             className="flex justify-center items-center"
-            style={{ minHeight: "calc(100vh - 300px)" }}
+            style={{ minHeight: 'calc(100vh - 300px)' }}
           >
-            {" "}
+            {' '}
             <p>Loading...</p>
           </div>
         ) : errorListInterview ? (
@@ -71,7 +71,7 @@ export function AccordionProblem() {
                   </span>
                   <svg
                     className={`w-6 h-6 text-gray-400 transition-transform duration-200 ${
-                      openQuestion === index ? "rotate-0" : "-rotate-180"
+                      openQuestion === index ? 'rotate-0' : '-rotate-180'
                     }`}
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -109,7 +109,7 @@ export function AccordionProblem() {
         }
       </div>
     </section>
-  );
+  )
 }
 
-export default AccordionProblem;
+export default AccordionProblem

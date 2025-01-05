@@ -1,6 +1,6 @@
-import { mission } from "@/utils/data-util";
-import Image from "next/image";
-import React from "react";
+import { mission } from '@/utils/data-util'
+import Image from 'next/image'
+import React from 'react'
 
 const OurMission = () => {
   return (
@@ -10,7 +10,7 @@ const OurMission = () => {
           About us
         </h1>
         <h6 className="md:text-3xl text-xl font-bold uppercase">
-          Our Mission{" "}
+          Our Mission{' '}
         </h6>
       </div>
 
@@ -36,7 +36,7 @@ const OurMission = () => {
         className="flex mx-auto"
       />
     </div>
-  );
-};
+  )
+}
 
-export default OurMission;
+export default OurMission

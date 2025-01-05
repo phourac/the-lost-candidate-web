@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react'
 
 export function SearchBar() {
   return (
@@ -24,26 +24,26 @@ export function SearchBar() {
       </div>
 
       <div className="flex flex-row gap-4 items-center">
-        {" "}
+        {' '}
         <Dropdown />
         <Dropdown />
       </div>
     </div>
-  );
+  )
 }
 
 const Dropdown = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState(null);
+  const [isOpen, setIsOpen] = useState(false)
+  const [selectedValue, setSelectedValue] = useState(null)
 
   const handleClick = () => {
-    setIsOpen(!isOpen);
-  };
+    setIsOpen(!isOpen)
+  }
 
   const handleSelect = (value: any) => {
-    setSelectedValue(value);
-    setIsOpen(false);
-  };
+    setSelectedValue(value)
+    setIsOpen(false)
+  }
 
   return (
     <div className="relative inline-block text-left">
@@ -52,7 +52,7 @@ const Dropdown = () => {
         className="inline-flex justify-center w-full shadow-sm bg-gray-100 rounded-md px-3 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50"
         onClick={handleClick}
       >
-        {selectedValue ? selectedValue : "Select"}
+        {selectedValue ? selectedValue : 'Select'}
         <svg
           className="-mr-1 ml-2 h-5 w-5"
           xmlns="http://www.w3.org/2000/svg"
@@ -73,21 +73,21 @@ const Dropdown = () => {
             <a
               href="#"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-              onClick={() => handleSelect("Option 1")}
+              onClick={() => handleSelect('Option 1')}
             >
               Option 1
             </a>
             <a
               href="#"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-              onClick={() => handleSelect("Option 2")}
+              onClick={() => handleSelect('Option 2')}
             >
               Option 2
             </a>
             <a
               href="#"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-              onClick={() => handleSelect("Option 3")}
+              onClick={() => handleSelect('Option 3')}
             >
               Option 3
             </a>
@@ -95,5 +95,5 @@ const Dropdown = () => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
