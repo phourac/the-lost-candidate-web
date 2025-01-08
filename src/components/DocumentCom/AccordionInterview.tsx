@@ -3,26 +3,35 @@ import INTERVIEW_API from '@/api/Interview'
 import { useRequest } from 'ahooks'
 import { useState } from 'react'
 import { Pagination } from '../Pagination'
+import { useInterviewContext } from '@/contexts/interviewContext'
 
 export function AccordionInterview() {
   const [openQuestion, setOpenQuestion] = useState(null)
-  const [currentPage, setCurrentPage] = useState(1) // Initialize current page
-  const [totalPages, setTotalPages] = useState(1) // Initialize total pages
-  const {
-    data: listInterview,
-    loading: loadingListInterview,
-    error: errorListInterview,
-    refresh: refreshListInterview
-  } = useRequest(() => INTERVIEW_API.getListReference('', currentPage), {
-    refreshDeps: [currentPage!!],
-    onSuccess: (data) => {
-      setTotalPages(data.meta.totalPages)
-    }
-  })
+  // const [currentPage, setCurrentPage] = useState(1) // Initialize current page
+  // const [totalPages, setTotalPages] = useState(1) // Initialize total pages
+  // const {
+  //   data: listInterview,
+  //   loading: loadingListInterview,
+  //   error: errorListInterview,
+  //   refresh: refreshListInterview
+  // } = useRequest(() => INTERVIEW_API.getListReference('', currentPage), {
+  //   refreshDeps: [currentPage!!],
+  //   onSuccess: (data) => {
+  //     setTotalPages(data.meta.totalPages)
+  //   }
+  // })
 
-  const onPageChange = (page: number) => {
-    setCurrentPage(page)
-  }
+  // const onPageChange = (page: number) => {
+  //   setCurrentPage(page)
+  // }
+  const {
+    listInterview,
+    loadingListInterview,
+    errorListInterview,
+    currentPage,
+    totalPages,
+    onPageChange
+  } = useInterviewContext()
 
   const toggleQuestion = (index: any) => {
     setOpenQuestion(openQuestion === index ? null : index)

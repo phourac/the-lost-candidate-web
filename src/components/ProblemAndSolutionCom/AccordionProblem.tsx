@@ -3,27 +3,35 @@ import PROBLEM_API from '@/api/Problem'
 import { useRequest } from 'ahooks'
 import { useState } from 'react'
 import { Pagination } from '../Pagination'
+import { useProblemContext } from '@/contexts/problemsContext'
 
 export function AccordionProblem() {
   const [openQuestion, setOpenQuestion] = useState(null)
-
-  const [currentPage, setCurrentPage] = useState(1) // Initialize current page
-  const [totalPages, setTotalPages] = useState(1) // Initialize total pages
   const {
-    data: listInterview,
-    loading: loadingListInterview,
-    error: errorListInterview,
-    refresh: refreshListInterview
-  } = useRequest(() => PROBLEM_API.getListProblem('', currentPage), {
-    refreshDeps: [currentPage!!],
-    onSuccess: (data) => {
-      setTotalPages(data.meta.totalPages)
-    }
-  })
+    listInterview,
+    loadingListInterview,
+    errorListInterview,
+    currentPage,
+    totalPages,
+    onPageChange
+  } = useProblemContext() // Access context data
+  // const [currentPage, setCurrentPage] = useState(1) // Initialize current page
+  // const [totalPages, setTotalPages] = useState(1) // Initialize total pages
+  // const {
+  //   data: listInterview,
+  //   loading: loadingListInterview,
+  //   error: errorListInterview,
+  //   refresh: refreshListInterview
+  // } = useRequest(() => PROBLEM_API.getListProblem('', currentPage), {
+  //   refreshDeps: [currentPage!!],
+  //   onSuccess: (data) => {
+  //     setTotalPages(data.meta.totalPages)
+  //   }
+  // })
 
-  const onPageChange = (page: number) => {
-    setCurrentPage(page) // Update current page when pagination is changed
-  }
+  // const onPageChange = (page: number) => {
+  //   setCurrentPage(page) // Update current page when pagination is changed
+  // }
 
   const toggleQuestion = (index: any) => {
     setOpenQuestion(openQuestion === index ? null : index)
