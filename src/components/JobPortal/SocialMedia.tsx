@@ -5,21 +5,21 @@ import { useState } from 'react'
 import { SearchBar } from '../SearchBar'
 import { Pagination } from '../Pagination'
 import SOCIALMEDIA_API from '@/api/Socialmedia'
+import { metaSocail, socialMediaData } from '@/utils/mockData-util'
 
 function SocialMedia() {
-  const [currentPage, setCurrentPage] = useState(1)
+  const [currentPage, setCurrentPage] = useState(metaSocail.currentPage)
 
-  const {
-    data: listSocialMedia,
-    loading: loadingListSocialMedia,
-    error: errorListSocialMedia,
-    refresh: refreshListSocialMedia
-  } = useRequest(() => SOCIALMEDIA_API.getListSocialMedia('', currentPage), {
-    refreshDeps: [currentPage]
-  })
+  // Pagination logic for local data
+  const itemsPerPage = 10
+  const startIndex = (currentPage - 1) * itemsPerPage
+  const paginatedPlatforms = socialMediaData.slice(
+    startIndex,
+    startIndex + itemsPerPage
+  )
 
   const handlePageChange = (newPage: number) => {
-    if (newPage > 0 && newPage <= listSocialMedia?.meta.totalPages!) {
+    if (newPage > 0 && newPage <= metaSocail.totalPages) {
       setCurrentPage(newPage)
     }
   }
@@ -63,89 +63,49 @@ function SocialMedia() {
                     </th>
                   </tr>
                 </thead>
-                {loadingListSocialMedia ? (
-                  <tbody>
-                    <tr className="bg-white ">
-                      <td colSpan={6}>
-                        <div
-                          className="flex justify-center items-center text-center"
-                          style={{ height: '500px' }}
-                        >
-                          Loading...
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                ) : errorListSocialMedia ? (
-                  <tbody>
-                    <tr className="bg-white ">
-                      <td colSpan={6}>
-                        <div
-                          className="flex justify-center items-center text-center"
-                          style={{ height: '500px' }}
-                        >
-                          Error
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                ) : listSocialMedia?.data.length === 0 ? (
-                  <tbody>
-                    <tr className="bg-white ">
-                      <td colSpan={6}>
-                        <div
-                          className="flex justify-center items-center text-center"
-                          style={{ height: '500px' }}
-                        >
-                          No Data
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                ) : (
-                  <tbody>
-                    {listSocialMedia?.data.map((user, index) => {
-                      const indexUniqe = index + 1 + (currentPage - 1) * 10
 
-                      return (
-                        <tr
-                          key={index}
-                          className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100"
-                        >
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                            {indexUniqe}
-                          </td>
-                          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            {user.name}
-                          </td>
-                          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            <Link
-                              href={user.link}
-                              target="_blank"
-                              className="text-primary underline"
-                            >
-                              Visit
-                            </Link>
-                          </td>
-                          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            {user.type}
-                          </td>
+                <tbody>
+                  {paginatedPlatforms?.map((user, index) => {
+                    const indexUniqe = index + 1 + (currentPage - 1) * 10
 
-                          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            {user.focus?.toUpperCase()}
-                          </td>
-                        </tr>
-                      )
-                    })}
-                  </tbody>
-                )}
+                    return (
+                      <tr
+                        key={index}
+                        className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100"
+                      >
+                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                          {indexUniqe}
+                        </td>
+                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                          {user.name}
+                        </td>
+                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                          <Link
+                            href={user.link}
+                            target="_blank"
+                            className="text-primary underline"
+                          >
+                            Visit
+                          </Link>
+                        </td>
+                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                          {user.type}
+                        </td>
+
+                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                          {user.focus?.toUpperCase()}
+                        </td>
+                      </tr>
+                    )
+                  })}
+                </tbody>
               </table>
             </div>
           </div>
         </div>
         <Pagination
           currentPage={currentPage}
-          totalPages={listSocialMedia?.meta.totalPages!}
+          totalPages={metaSocail.totalPages}
           onPageChange={handlePageChange}
         />
       </div>
