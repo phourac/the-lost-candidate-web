@@ -380,6 +380,14 @@ Jan 2023 – Dec 2024
                       journey in detail.
                     </p>
                   </li>
+                  <li className="flex items-start gap-2">
+                    <div className="text-blue-600 mt-1">•</div>
+                    <p className="text-blue-800">
+                      A CV usually requires a cover letter in specific
+                      scenarios, especially when you're applying for a job,
+                      internship, or academic opportunity.{' '}
+                    </p>
+                  </li>
                 </>
               )}
             </ul>
