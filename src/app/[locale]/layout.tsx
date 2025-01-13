@@ -9,6 +9,7 @@ import { getMessages, unstable_setRequestLocale } from 'next-intl/server'
 import NextTopLoader from 'nextjs-toploader'
 import { ProblemProvider } from '@/contexts/problemsContext'
 import { InterviewProvider } from '@/contexts/interviewContext'
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -76,6 +77,13 @@ export default async function RootLayout({
   return (
     <html lang={locale} className={`${inter.variable}`}>
       <NextIntlClientProvider messages={messages}>
+        <head>
+          {/* Google site verification meta tag */}
+          <meta
+            name="SMaHROOvvB6aL5fs6Spco0sDYpiQfAJ0L0EtirsEmbU"
+            content="YOUR_VERIFICATION_CODE"
+          />
+        </head>
         <body className="">
           <Navbar />
           <ProblemProvider>
@@ -95,6 +103,7 @@ export default async function RootLayout({
           </ProblemProvider>
           <Footer />
         </body>
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_ANALYTICS_ID || ''} />
       </NextIntlClientProvider>
     </html>
   )
