@@ -81,7 +81,7 @@ export default async function RootLayout({
           {/* Google site verification meta tag */}
           <meta
             name="SMaHROOvvB6aL5fs6Spco0sDYpiQfAJ0L0EtirsEmbU"
-            content="YOUR_VERIFICATION_CODE"
+            content="SMaHROOvvB6aL5fs6Spco0sDYpiQfAJ0L0EtirsEmbU"
           />
         </head>
         <body className="">
